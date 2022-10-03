@@ -1,13 +1,5 @@
 ### # 系统推荐使用Ubuntu22.04 X64
 
-### # 推荐使用原版BBR加速
-
-```
-wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
-chmod +x tcp.sh
-./tcp.sh
-```
-
 ### # 编译与安装Caddy
 ```
 apt install golang-go
@@ -17,7 +9,6 @@ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
 ### # 配置Caddy
 在Caddy同目录下新建文件Caddyfile，并填入以下内容
-
 ```
 :443, example.com #你的域名
 tls example@example.com #你的邮箱
@@ -71,9 +62,9 @@ useradd --system \
   caddy
   ```
   
-  在/etc/systemd/system/下创建caddy.service文件，并填入以下内容
-  ```
-  [Unit]
+在/etc/systemd/system/下创建caddy.service文件，并填入以下内容
+```
+[Unit]
 Description=Caddy
 Documentation=https://caddyserver.com/docs/
 After=network.target network-online.target
@@ -94,6 +85,7 @@ AmbientCapabilities=CAP_NET_BIND_SERVICE
 [Install]
 WantedBy=multi-user.target
 ```
+
 启动Caddy
 ```
 systemctl daemon-reload
@@ -109,4 +101,9 @@ systemctl status caddy
 重新加载配置文件
 ```
 systemctl reload caddy
+```
+
+### # 推荐使用原版BBR加速
+```
+wget -O tcpx.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
 ```
