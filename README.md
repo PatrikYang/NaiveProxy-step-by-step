@@ -107,3 +107,22 @@ systemctl reload caddy
 ```
 wget -O tcpx.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
 ```
+
+### # 优化参数
+```
+echo "
+net.ipv4.tcp_congestion_control=bbr
+net.ipv4.tcp_slow_start_after_idle=0
+net.ipv4.tcp_notsent_lowat=16384
+">>/etc/sysctl.conf
+```
+
+刷新配置
+```
+sysctl -p
+```
+
+重启服务器
+```
+reboot
+```
