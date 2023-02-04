@@ -110,6 +110,32 @@ wget -O tcpx.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh" &
 
 ### # 网络优化参数
 ```
+if [ ! -f "/etc/sysctl.conf" ]; then
+    touch /etc/sysctl.conf
+fi
+sed -i '/net.core.default_qdisc/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_congestion_control/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_retries2/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_slow_start_after_idle/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_notsent_lowat/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_fastopen/d' /etc/sysctl.conf
+sed -i '/fs.file-max/d' /etc/sysctl.conf
+sed -i '/fs.inotify.max_user_instances/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_syncookies/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_fin_timeout/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_tw_reuse/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_max_syn_backlog/d' /etc/sysctl.conf
+sed -i '/net.ipv4.ip_local_port_range/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_max_tw_buckets/d' /etc/sysctl.conf
+sed -i '/net.ipv4.route.gc_timeout/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_synack_retries/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_syn_retries/d' /etc/sysctl.conf
+sed -i '/net.core.somaxconn/d' /etc/sysctl.conf
+sed -i '/net.core.netdev_max_backlog/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_timestamps/d' /etc/sysctl.conf
+sed -i '/net.ipv4.tcp_max_orphans/d' /etc/sysctl.conf
+sed -i '/net.ipv4.ip_forward/d' /etc/sysctl.conf
+
 echo "net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 net.ipv4.tcp_slow_start_after_idle = 0
